@@ -172,3 +172,6 @@ div.exploration {
     height: 100%;
     width: auto;
 }
+.navbar-brand {
+    padding: 8px;
+}

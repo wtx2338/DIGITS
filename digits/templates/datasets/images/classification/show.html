@@ -5,29 +5,29 @@
 
 {% macro print_job_information() %}
 <div class="panel-heading">
-    <h4>Job Information</h4>
+    <h4>任务信息</h4>
 </div>
 <div class="panel-body">
     <dl>
-        <dt>Job Directory</dt>
+        <dt>任务文件夹</dt>
         <dd>{{ job.dir() }}</dd>
     </dl>
     <dl>
-        <dt>Image Dimensions</dt>
+        <dt>图像大小</dt>
         <dd>{{job.image_dims[1]}}x{{job.image_dims[0]}} (Width x Height)</dd>
-        <dt>Image Type</dt>
+        <dt>图像类型/dt>
         <dd>{{'Color' if job.image_dims[2] == 3 else 'Grayscale'}}</dd>
         <dt>Resize Transformation</dt>
         <dd>{{ job.resize_mode_name() }}</dd>
-        <dt>DB Backend</dt>
+        <dt>数据库</dt>
         <dd>{{job.get_backend()}}</dd>
-        <dt>Image Encoding</dt>
+        <dt>图像压缩方式</dt>
         <dd>{{job.get_encoding()}}</dd>
-        <dt>DB Compression</dt>
+        <dt>数据库压缩</dt>
         <dd>{{job.get_compression()}}</dd>
     </dl>
     <dl>
-        <dt>Dataset size</dt>
+        <dt>数据集大小</dt>
         <dd>{{job.disk_size_fmt()}}</dd>
     </dl>
 </div>
@@ -39,20 +39,20 @@
 </div>
 <div class="panel-body">
     <dl>
-        <dt>Folder</dt>
+        <dt>文件夹</dt>
         <dd>{{task.folder}}</dd>
     </dl>
     <dl>
         {% if task.label_count %}
-        <dt>Number of Categories</dt>
+        <dt>类别数量</dt>
         <dd>{{task.label_count}}</dd>
         {% endif %}
         {% if task.train_count %}
-        <dt>Training Images</dt>
+        <dt>训练图像数</dt>
         <dd>{{task.train_count}}</dd>
         {% endif %}
         {% if task.val_count %}
-        <dt>Validation Images</dt>
+        <dt>验证图像数</dt>
         <dd>
         {{task.val_count}}
         {% if task.percent_val != 0 and task.percent_val != 100 %}
@@ -61,7 +61,7 @@
         </dd>
         {% endif %}
         {% if task.test_count %}
-        <dt>Test images</dt>
+        <dt>测试图像数</dt>
         <dd>
         {{task.test_count}}
         {% if task.percent_test != 0 and task.percent_test != 100 %}
@@ -78,7 +78,7 @@
     <h4>{{task.name()}}</h4>
 </div>
 <div class="panel-body">
-    <dl>
+    <!-- <dl>
         <dt>Input File{{' (before shuffling)' if task.shuffle }}</dt>
         <dd>{{serve_file(task, task.input_file)}}</dd>
         {% if task.create_db_log_file %}
@@ -92,10 +92,10 @@
         {% if task.entries_error %} ({{task.entries_error}} failed to load) {% endif %}
         </dd>
         {% endif %}
-    </dl>
+    </dl> -->
 
     {# Category distribution graph #}
-    <div class="distribution-graph" style="display:none;"></div>
+    <!-- <div class="distribution-graph" style="display:none;"></div> -->
     {% if task.distribution_data() %}
         <script>
             drawDistributionGraph("{{task.html_id()}}",
@@ -108,7 +108,7 @@
 
     {# Mean image #}
     <div class="mean-image" style="display:none;">
-        <b>Image Mean:</b>
+        <b>图像均值:</b>
         <img class="mean-image" />
     </div>
     {% if task.status=='D' and task.mean_file %}
@@ -121,7 +121,7 @@
     {# Exploration #}
     {% if task.backend=='lmdb' %}
         <div class="exploration" style="display:none;">
-            <a href="{{url_for('digits.dataset.images.classification.views.explore', job_id=job.id(), db=task.db_name.lower())}}" class="btn btn-primary">Explore the db</a>
+            <a href="{{url_for('digits.dataset.images.classification.views.explore', job_id=job.id(), db=task.db_name.lower())}}" class="btn btn-info">Explore the db</a>
         </div>
         {% if task.status=='D' %}
             <script>

@@ -521,37 +521,37 @@ try {
 
     app.controller('running_controller', function($scope, $controller) {
         $controller('job_controller', {$scope: $scope});
-        $scope.title = 'Running Jobs';
-        $scope.fields = [{name: 'name', show: true, min_width: 100},
-                         {name: 'submitted', show: true, min_width: 100},
-                         {name: 'status', show: true, min_width: 120},
-                         {name: 'loss', show: true, min_width: 200},
-                         {name: 'progress', show: true, min_width: 200}];
+        $scope.title = '运行中工作';
+        $scope.fields = [{name: '工作名', show: true, min_width: 100},
+                         {name: '上传时间', show: true, min_width: 100},
+                         {name: '状态', show: true, min_width: 120},
+                         {name: '丢失', show: true, min_width: 200},
+                         {name: '进度', show: true, min_width: 200}];
     });
 
     app.controller('datasets_controller', function($scope, $controller) {
         $controller('job_controller', {$scope: $scope});
-        $scope.title = 'Datasets';
-        $scope.fields = [{name: 'name', show: true},
-                         {name: 'refs', show: true},
-                         {name: 'extension', show: true, min_width: 150},
-                         {name: 'backend', show: true},
-                         {name: 'status', show: true},
-                         {name: 'elapsed', show: true},
-                         {name: 'submitted', show: true}];
+        $scope.title = '数据集';
+        $scope.fields = [{name: '数据集名', show: true},
+                         {name: '编号', show: true},
+                         {name: '扩展', show: true, min_width: 150},
+                         {name: '后台', show: true},
+                         {name: '状态', show: true},
+                         {name: '经过时间', show: true},
+                         {name: '上传时间', show: true}];
     });
 
     app.controller('models_controller', function($scope, $localStorage, $controller) {
         $controller('job_controller', {$scope: $scope});
-        $scope.title = 'Models';
+        $scope.title = '模型';
         var model_fields = [
-            {name: 'name', show: true, min_width: 100},
-            {name: 'id', show: false, min_width: 200},
-            {name: 'extension', show: true, min_width: 150},
-            {name: 'framework', show: true, min_width: 50},
-            {name: 'status', show: true, min_width: 50},
-            {name: 'elapsed', show: true, min_width: 50},
-            {name: 'submitted', show: true, min_width: 50}
+            {name: '模型名', show: true, min_width: 100},
+            {name: '编号', show: false, min_width: 200},
+            {name: '扩展', show: true, min_width: 150},
+            {name: '框架', show: true, min_width: 50},
+            {name: '状态', show: true, min_width: 50},
+            {name: '经过时间', show: true, min_width: 50},
+            {name: '上传时间', show: true, min_width: 50}
         ];
         if ($localStorage.model_fields) {
             for (var i = 0; i < model_fields.length; i++) {
@@ -577,14 +577,14 @@ try {
 
     app.controller('pretrained_models_controller', function($scope, $localStorage, $controller) {
         $controller('job_controller', {$scope: $scope});
-        $scope.title = 'Models';
-        $scope.fields = [{name: 'name', show: true, min_width: 0},
-                         {name: 'framework', show: true, min_width: 0},
-                         {name: 'username', show: true, min_width: 0},
-                         {name: 'has_labels', show: true, min_width: 0},
-                         {name: 'status', show: true, min_width: 0},
-                         {name: 'elapsed', show: true, min_width: 0},
-                         {name: 'submitted', show: true, min_width: 0}];
+        $scope.title = '模型';
+        $scope.fields = [{name: '模型名', show: true, min_width: 0},
+                         {name: '框架', show: true, min_width: 0},
+                         {name: '用户', show: true, min_width: 0},
+                         {name: '有标签', show: true, min_width: 0},
+                         {name: '状态', show: true, min_width: 0},
+                         {name: '经过时间', show: true, min_width: 0},
+                         {name: '上传时间', show: true, min_width: 0}];
     });
 
     function precision(input, sigfigs) {

@@ -115,7 +115,7 @@ function updateJobName() {
                 </script>
                 <input name="job-name" class="form-control" value="{{job.name()}}"/>
                 <a href=# class="btn btn-primary" onClick="return updateJobName();">Update</a>
-                <a href=# class="btn btn-info" onClick="$('#edit-job-name').hide(); $('#show-job-name').show(); return false;">Cancel</a>
+                <a href=# class="btn btn-info" onClick="$('#edit-job-name').hide(); $('#show-job-name').show(); return false;">取消</a>
             </div>
         </div>
         {% if job.username %}
@@ -123,12 +123,12 @@ function updateJobName() {
         {% endif %}
         <div class="pull-right">
             {% if job.form_data is defined %}
-            <a id="clone-job" class="btn btn-info" href="{{url_for('digits.views.clone_job', clone=job.id())}}">Clone Job</a>
+            <a id="clone-job" class="btn btn-info" href="{{url_for('digits.views.clone_job', clone=job.id())}}">复制</a>
             {% else %}
             <a id="clone-job" class="btn btn-info" disabled>Clone Job</a>
             {% endif %}
             <a id="abort-job" class="btn btn-warning {{ 'hidden' if not job.status.is_running() }} {{'disabled' if not (job | has_permission('abort'))}}">Abort Job</a>
-            <a id="delete-job" class="btn btn-danger {{'disabled' if not (job | has_permission('delete'))}}">Delete Job</a>
+            <a id="delete-job" class="btn btn-danger {{'disabled' if not (job | has_permission('delete'))}}">删除</a>
         </div>
     </div>
     <script>
@@ -179,7 +179,7 @@ $('#delete-job').on('click', function(event) {
         <div id="job-statuses" class="panel panel-{{job.status.css}}">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    Job Status
+                    任务状态
                     <small>{{job.status.name}}</small>
                 </h4>
             </div>
@@ -241,7 +241,7 @@ $('#delete-job').on('click', function(event) {
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    Related jobs
+                    相关工作
                 </h4>
             </div>
             <div class="panel-collapse">
@@ -284,7 +284,7 @@ $('#delete-job').on('click', function(event) {
 
         <div id="notes-information" class="panel panel-default">
             <div class="panel-heading">
-                <h4>Notes</h4>
+                <h4>记录</h4>
             </div>
             <div class="panel-body">
                 <div id="show-job-notes" class="col-sm-12">

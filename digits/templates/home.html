@@ -27,7 +27,7 @@
         GPU{{'s' if total_gpu_count != 1 }} available
     </div>
     {% endif %}
-    <h1>Home</h1>
+    <!-- <h1>Home</h1> -->
 </div>
 
 {{ print_flashes() }}
@@ -82,17 +82,17 @@
                                 <a class="btn btn-xs btn-danger"
                                    ng-disabled="!enabled"
                                    ng-click="!enabled || delete_jobs();">
-                                    Delete
+                                    删除
                                 </a>
                                 <a class="btn btn-xs btn-warning"
                                    ng-disabled="!enabled"
                                    ng-click="!enabled || abort_jobs();">
-                                    Abort
+                                    关于
                                 </a>
                                 <a class="btn btn-xs btn-primary"
                                    ng-disabled="!group_enabled"
                                    ng-click="!group_enabled || group_jobs();">
-                                    Group
+                                    组
                                 </a>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                 <!-- group bar -->
                                 <tr class="unselectable group-bar"
                                     ng-if="jc.storage.show_groups && ($first || jobs[$index-1].group != job.group)">
-                                    <td colspan="{[ fields.length ]}" style="background-color:#cccccc">
+                                    <td colspan="{[ fields.length ]}">
                                         <div ng-click="c.hideRows[job.group] = !c.hideRows[job.group];">
                                             <span class="glyphicon"
                                                   ng-class="c.hideRows[job.group] ? 'glyphicon-triangle-right' : 'glyphicon-triangle-bottom'">
@@ -198,11 +198,11 @@
                 </div>
             </div>
         </div>
-        <div ng-if="jc.running_jobs.length == 0">
+        <!-- <div ng-if="jc.running_jobs.length == 0">
             <h4>
                 No Jobs Running
             </h4>
-        </div>
+        </div> -->
 
         <!-- Tabs -->
         <div class="row">
@@ -211,7 +211,7 @@
                     <li ng-class="{active:tab.isSet(1)}">
                         <a href ng-click="tab.setTab(1, $event)">
                             <h4>
-                                Datasets
+                                数据集
                                 <small>
                                     ({[jc.dataset_jobs.length]})
                                 </small>
@@ -221,7 +221,7 @@
                     <li ng-class="{active:tab.isSet(2)}">
                         <a href ng-click="tab.setTab(2, $event)">
                             <h4>
-                                Models
+                                模型
                                 <small>
                                     ({[jc.model_jobs.length]})
                                 </small>
@@ -231,7 +231,7 @@
                     <li ng-class="{active:tab.isSet(3)}" id="pretrainedModelTab">
                         <a href ng-click="tab.setTab(3, $event)">
                             <h4>
-                                Pretrained Models
+                                预训练模型
                                 <small>
                                     ({[jc.pretrained_model_jobs.length]})
                                 </small>

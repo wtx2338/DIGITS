@@ -36,7 +36,7 @@
                 <dd>
                     {% if task.status=='D' and task.get_encoding(name)!='none' %}
                     <div>
-                        <a href="{{url_for('digits.dataset.generic.views.explore', job_id=job.id(), db=path)}}" class="btn btn-primary">Explore the db</a>
+                        <a href="{{url_for('digits.dataset.generic.views.explore', job_id=job.id(), db=path)}}" class="btn btn-info">Explore the db</a>
                     </div>
                     {% endif %}
                 </dd>
@@ -60,13 +60,13 @@
     <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>Job Information</h4>
+                <h4>任务信息</h4>
             </div>
             <div class="panel-body">
                 <dl>
-                    <dt>Job Directory</dt>
+                    <dt>任务文件夹</dt>
                     <dd>{{job.dir()}}</dd>
-                    <dt>Dataset size</dt>
+                    <dt>数据组大小</dt>
                     <dd>{{job.disk_size_fmt()}}</dd>
                 </dl>
             </div>

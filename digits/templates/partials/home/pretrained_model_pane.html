@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="pull-right">
-                Load Model
+                读取模型
                 <ul class="nav nav-pills">
                     {% for category in load_model_options.keys()|sort %}
                     {% set options = load_model_options[category] %}
@@ -29,7 +29,7 @@
                 </ul>
             </div>
             <div style="position:absolute; bottom:0">
-                <label>Group Jobs:
+                <label>工作组:
                     <input type="checkbox"
                            ng-model="jc.storage.show_groups">
                 </label>
@@ -58,12 +58,12 @@
                     <a class="btn btn-xs btn-danger"
                        ng-disabled="!enabled"
                        ng-click="!enabled || delete_jobs();">
-                        Delete
+                        删除
                     </a>
                     <a class="btn btn-xs btn-primary"
                        ng-disabled="!group_enabled"
                        ng-click="!group_enabled || group_jobs();">
-                        Group
+                        组
                     </a>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                     <tr>
                         <td colspan="{[fields.length]}">
                             <h5>
-                                No Pretrained Models
+                                没有预训练模型
                             </h5>
                         </td>
                     </tr>

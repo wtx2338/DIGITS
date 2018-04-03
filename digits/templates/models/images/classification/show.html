@@ -13,9 +13,9 @@
     <div class="col-sm-6">
         <div class="well">
             <dl>
-                <dt>Job Directory</dt>
+                <dt>工作文件夹</dt>
                 <dd>{{ job.dir() }}</dd>
-                <dt>Disk Size</dt>
+                <dt>大小</dt>
                 <dd>{{job.disk_size_fmt()}}</dd>
                 {% for key,value in task.get_model_files().items() %}
                 <dt>{{key}}</dt>
@@ -62,12 +62,12 @@
         <div class="modal-content">
             <form method="post" id="nuance_form"
                   action="{{ url_for('digits.model.views.publish_inference', job_id=job.id()) }}">
-                <div class="modal-header">
+                <!-- <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
                         &times;
                     </button>
                     <h4 class="modal-title">Publish to inference server</h4>
-                </div>
+                </div> -->
                 <div class="modal-body">
                     <p>
                     <div class="row">
@@ -155,12 +155,12 @@
                             style="display:none;"
                                 ></span>
             <div class="pull-right combined-graph" style="display:none;">
-                <a class="btn btn-primary btn-sm" target="_blank"
+                <a class="btn btn-info btn-sm" target="_blank"
                     href="{{url_for('digits.model.images.classification.views.large_graph', job_id=job.id())}}">
                     View Large
                 </a>
                 {% if job.train_task().has_timeline_traces() %}
-                <a class="btn btn-primary btn-sm" target="_blank"
+                <a class="btn btn-info btn-sm" target="_blank"
                     href="{{url_for('digits.model.images.classification.views.timeline_tracing', job_id=job.id())}}">
                     View Timeline Traces
                 </a>
@@ -194,10 +194,10 @@
                 style="display:none;"
                 {% endif %}
                 >
-                <h2>Trained Models</h2>
+                <h2>训练模式</h2>
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="snapshot_epoch">Select Model</label>
+                        <label for="snapshot_epoch">选择一个模型</label>
                     </div>
                 </div>
                 <div class="row">
@@ -239,28 +239,28 @@ updateSnapshotList({% autoescape false %}{{task.snapshot_list()}}{% endautoescap
                             formmethod="post"
                             formenctype="multipart/form-data"
                             class="btn btn-info">
-                            Download Model
+                            下载模型
                         </button>
                         <button
                             formaction="{{url_for('digits.model.views.to_pretrained', job_id=job.id())}}"
                             formmethod="post"
                             formenctype="multipart/form-data"
                             class="btn btn-success">
-                            Make Pretrained Model
+                            存储成预训练模型
                         </button>
                         <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-success" data-toggle="modal"
+                        <!-- <button type="button" class="btn btn-success" data-toggle="modal"
                                 data-target="#nuance_modal">
                             Publish to inference server
-                        </button>
+                        </button> -->
                     </div>
                 </div>
                 {% if task.get_framework_id() in framework_ids %}
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Test a single image</h3>
+                        <h3>测试单一图片</h3>
                         <div class="form-group">
-                            <label for="image_path" class="control-label">Image Path</label>
+                            <label for="image_path" class="control-label">图片路径</label>
                             <span name="image_path_explanation"
                                 class="explanation-tooltip glyphicon glyphicon-question-sign"
                                 data-container="body"
@@ -269,12 +269,12 @@ updateSnapshotList({% autoescape false %}{{task.snapshot_list()}}{% endautoescap
                             <input type="text" id="image_path" name="image_path" class="form-control autocomplete_path">
                         </div>
                         <div>
-                            <label for="image_file" class="control-label">Upload image</label>
+                            <label for="image_file" class="control-label">上传图片</label>
                             <div class="form-group cl-upload-files">
                                 <div class="input-group">
                                     <span class="input-group-btn">
                                         <span class="btn btn-info btn-file" %s>
-                                            Browse&hellip;
+                                            浏览&hellip;
                                             <input class="form-control" type="file" id="image_file" name="image_file" >
                                         </span>
                                     </span>
@@ -303,19 +303,19 @@ updateSnapshotList({% autoescape false %}{{task.snapshot_list()}}{% endautoescap
                             formmethod="post"
                             formenctype="multipart/form-data"
                             formtarget="_blank"
-                            class="btn btn-primary">
-                            Classify One
+                            class="btn btn-info">
+                            测试图片
                         </button>
                     </div>
                     <div class="col-sm-6">
-                        <h3>Test a list of images</h3>
+                        <h3>测试一个图片集</h3>
                         <div>
-                            <label for="image_list" class="control-label">Upload Image List</label>
+                            <label for="image_list" class="control-label">上传图片集</label>
                             <div class="form-group cl-upload-files">
                                 <div class="input-group">
                                     <span class="input-group-btn">
                                         <span class="btn btn-info btn-file" %s>
-                                            Browse&hellip;
+                                            浏览&hellip;
                                             <input class="form-control" type="file" id="image_list" name="image_list" >
                                         </span>
                                     </span>
@@ -325,12 +325,12 @@ updateSnapshotList({% autoescape false %}{{task.snapshot_list()}}{% endautoescap
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="image_folder" class="control-label">Image folder <i>(optional)</i></label>
+                            <label for="image_folder" class="control-label">图片文件夹 <i>(optional)</i></label>
                             <input type="text" id="image_folder" name="image_folder" class="form-control autocomplete_path">
                             <small>Relative paths in the text file will be prepended with this value before reading</small>
                         </div>
                         <div class="form-group">
-                            <label for="num_test_images" class="control-label">Number of images use from the file</label>
+                            <label for="num_test_images" class="control-label">图片数量</label>
                             <input type="text" id="num_test_images" name="num_test_images" class="form-control" placeholder="All">
                             <small>Leave blank to use all</small>
                         </div>
@@ -339,8 +339,8 @@ updateSnapshotList({% autoescape false %}{{task.snapshot_list()}}{% endautoescap
                             formmethod="post"
                             formenctype="multipart/form-data"
                             formtarget="_blank"
-                            class="btn btn-primary">
-                            Classify Many
+                            class="btn btn-info">
+                            测试图片集
                         </button>
                         <span name="classify-many-explanation"
                             class="explanation-tooltip glyphicon glyphicon-question-sign"
@@ -356,8 +356,8 @@ updateSnapshotList({% autoescape false %}{{task.snapshot_list()}}{% endautoescap
                             formmethod="post"
                             formenctype="multipart/form-data"
                             formtarget="_blank"
-                            class="btn btn-primary">
-                            Top N Predictions per Category
+                            class="btn btn-info">
+                            显示每类前 N 个图片
                         </button>
                         <span name="top-n-explanation"
                             class="explanation-tooltip glyphicon glyphicon-question-sign"
