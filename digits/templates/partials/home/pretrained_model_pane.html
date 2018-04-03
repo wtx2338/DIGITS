@@ -94,7 +94,7 @@
                     <!-- group bar -->
                     <tr class="unselectable group-bar"
                         ng-if="jc.storage.show_groups && ($first || jobs[$index-1].group != job.group)">
-                        <td colspan="{[ fields.length ]}" style="background-color:#cccccc">
+                        <td colspan="{[ fields.length ]}">
                             <div ng-click="c.hideRows[job.group] = !c.hideRows[job.group];">
                                 <span class="glyphicon"
                                       ng-class="c.hideRows[job.group] ? 'glyphicon-triangle-right' : 'glyphicon-triangle-bottom'">

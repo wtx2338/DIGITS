@@ -91,7 +91,7 @@
                 <tr ng-repeat-start="(key, value) in groups" ng-hide="true"> </tr>
                 <!-- group bar -->
                 <tr class="unselectable group-bar">
-                    <td colspan="7" style="background-color:#cccccc" title="{[ value.base_url ]}">
+                    <td colspan="7" title="{[ value.base_url ]}">
                         <strong>{[ value.welcome_msg ? value.welcome_msg : value.base_url ]}</strong>
                         <span ng-show="local_error != null">{[ local_error ]}</span>
                     </td>

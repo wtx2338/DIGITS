@@ -168,3 +168,7 @@ ul.inline li {
 div.exploration {
     margin-top: 10px;
 }
+.navbar-brand>img {
+    height: 100%;
+    width: auto;
+}
